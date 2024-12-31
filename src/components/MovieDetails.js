@@ -1,13 +1,21 @@
-function MovieDetails({ title, coverImg, year, runtime, genres }) {
+import styles from "./Movie.module.css";
+function MovieDetails({ title, coverImg, year, runtime, genres, summary }) {
   return (
-    <div>
-      <h2>{title}</h2>
-      <img src={coverImg} />
-      <div>{year}</div>
-      <div>runnung time is {runtime}minutes</div>
-      {genres.map((g) => (
-        <li key={g}>{g}</li>
-      ))}
+    <div className={styles.movie}>
+      <img src={coverImg} className={styles.theMovie__img} />
+      <div>
+        <div>
+          <h2 className={styles.movie__title}>{title}</h2>
+        </div>
+        <div className={styles.movie__year}>{year}</div>
+        <div>runnung time is {runtime}minutes</div>
+        <ul className={styles.movie__genres}>
+          {genres.map((g) => (
+            <li key={g}>{g}</li>
+          ))}
+        </ul>
+        <p>{summary}</p>
+      </div>
     </div>
   );
 }
